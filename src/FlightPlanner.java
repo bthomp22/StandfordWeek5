@@ -1,4 +1,4 @@
-
+//Flight Planner - Brent Thompson
 import acm.program.*;
 import acm.util.*;
 import java.io.*;
@@ -11,7 +11,7 @@ public class FlightPlanner extends ConsoleProgram {
 	
 	public void run() {
 		println("Welcome to Flight Planner!");
-		readFlightData("flights.txt");
+		readFlightData("textFiles/flights.txt");
 		println("Here's a list of all the cities in our database:");
 		printCityList(cities);
 		println("Let's plan a round-trip route!");
@@ -85,15 +85,15 @@ public class FlightPlanner extends ConsoleProgram {
 	}
 	
 	private void readFlightEntry(String line) {
-	int arrow = line.indexOf("->");
-	if (arrow == -1) {
-	throw new ErrorException("Illegal flight entry " + line);
-	}
-	String fromCity = line.substring(0, arrow).trim();
-	String toCity = line.substring(arrow + 2).trim();
-	defineCity(fromCity);
-	defineCity(toCity);
-	getDestinations(fromCity).add(toCity);
+		int arrow = line.indexOf("->");
+		if (arrow == -1) {
+			throw new ErrorException("Illegal flight entry " + line);
+		}
+		String fromCity = line.substring(0, arrow).trim();
+		String toCity = line.substring(arrow + 2).trim();
+		defineCity(fromCity);
+		defineCity(toCity);
+		getDestinations(fromCity).add(toCity);
 	}
 	
 	private void defineCity(String cityName) {
